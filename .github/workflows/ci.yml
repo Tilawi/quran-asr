@@ -1,0 +1,25 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/cache@v4
+        with:
+          path: .assets
+          key: assets-${{ hashFiles('scripts/fetch-assets.mjs') }}
+      - run: npm install
+      - run: npx tsc -p tsconfig.json
+      - run: npm run build
+      - run: npm run fetch-assets
+      - run: npm test
+        env:
+          ASR_GOLDENS: full
