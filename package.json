@@ -1,0 +1,63 @@
+{
+  "name": "@tilawi/quran-asr",
+  "version": "0.1.0",
+  "description": "On-device Quran recitation recognition core: CTC decoding, verse identification and a conservative trust gate. Runtime-agnostic (inject your ONNX runner).",
+  "license": "MIT",
+  "author": "Muhammed Durakovic",
+  "homepage": "https://github.com/Tilawi/quran-asr#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tilawi/quran-asr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tilawi/quran-asr/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "react-native": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "react-native": "./src/index.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "test": "vitest run",
+    "fetch-assets": "node scripts/fetch-assets.mjs",
+    "eval": "tsx eval/run-eval.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "quran",
+    "asr",
+    "speech-recognition",
+    "arabic",
+    "ctc",
+    "on-device",
+    "onnx"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "onnxruntime-node": "^1.24.3",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.2",
+    "vitest": "^5.0.1"
+  }
+}
