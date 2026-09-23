@@ -1,5 +1,9 @@
 # @tilawi/quran-asr
 
+[![npm](https://img.shields.io/npm/v/@tilawi/quran-asr.svg)](https://www.npmjs.com/package/@tilawi/quran-asr) [![license](https://img.shields.io/npm/l/@tilawi/quran-asr.svg)](LICENSE) [![ci](https://github.com/Tilawi/quran-asr/actions/workflows/ci.yml/badge.svg)](https://github.com/Tilawi/quran-asr/actions/workflows/ci.yml)
+
+[npm](https://www.npmjs.com/package/@tilawi/quran-asr) · [Model on Hugging Face](https://huggingface.co/muhdur/tilawi-fastconformer-quran) · [Tilawi app](https://tilawi.ai) · [All Tilawi open source](https://github.com/Tilawi)
+
 On-device Quran recitation recognition: turn a recitation into the verse(s) being recited, privately, with no server.
 
 This is the recognition core behind the [Tilawi](https://tilawi.ai) app. It takes the output of a CTC speech model, decodes it, identifies the recited verse or verse span, and applies a conservative **trust gate**. When the gate isn't confident, it returns "no match" instead of guessing, because naming the wrong verse is worse than naming none.
@@ -36,6 +40,14 @@ Measured with [`eval/run-eval.mjs`](eval/run-eval.mjs): the real model through t
 All 13 false flags on correct recitations trace back to the model mishearing or dropping words, not to the judging logic. The same studio-audio caveat applies.
 
 **Scoring a passage:** `judgeAttempt` returns two scores. `overallPercent` is correct ÷ (all expected words + extra words), so stopping early lowers it; show this one for a passage. `scorePercent` only covers the words the reciter reached, so 1 correct word of a page scores 100. Words after the point where the reciter stopped come back as `unattempted` (not errors). Words skipped *before* a recited word come back as `omission`.
+
+## Install
+
+```bash
+npm install @tilawi/quran-asr
+```
+
+The model and data files are downloaded separately (see below).
 
 ## Quick start (Node)
 
