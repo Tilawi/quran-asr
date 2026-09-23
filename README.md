@@ -14,7 +14,7 @@ This is the recognition core behind the [Tilawi](https://tilawi.ai) app. It take
 
 ## Accuracy
 
-Measured with [`eval/run-eval.mjs`](eval/run-eval.mjs): the real model through this core on 600 verses (200 per reciter, randomly sampled across the whole Quran, seed 1) from [EveryAyah](https://everyayah.com).
+The numbers below come from [`eval/run-eval.mjs`](eval/run-eval.mjs): the real model through this core on 600 verses (200 per reciter, randomly sampled across the whole Quran, seed 1) from [EveryAyah](https://everyayah.com). Real live tests, with people reciting into phones, were done as well.
 
 | Reciter | Correct verse | No match | Wrong verse |
 |---|---|---|---|
