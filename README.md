@@ -24,7 +24,7 @@ Measured with [`eval/run-eval.mjs`](eval/run-eval.mjs): the real model through t
 
 "Correct" includes 12 cases where the predicted verse is **word-for-word identical** to the recited one (e.g. 55:13, which recurs 31 times in Ar-Rahman). Audio alone cannot tell those apart. The one "no match" is a very short verse (104:5) that the trust gate declined to guess.
 
-**Caveat:** these are clean studio recordings by professional reciters. Recordings from a phone microphone in a real room, and from learners, will score lower. The harness is included so you can measure on your own audio.
+**About these numbers:** they come from studio recordings because those can be scored automatically. The model has also been tested with live recitation recorded on phones. It isn't perfect, but it is free and open source in the hope that it helps others; the harness is included so you can measure it on your own audio.
 
 ### Memorization feedback
 
@@ -37,7 +37,7 @@ Measured with [`eval/run-eval.mjs`](eval/run-eval.mjs): the real model through t
 | A word was skipped | 99.5% flagged as missed |
 | An extra word was said | 99.7% reported as extra |
 
-All 13 false flags on correct recitations trace back to the model mishearing or dropping words, not to the judging logic. The same studio-audio caveat applies.
+All 13 false flags on correct recitations trace back to the model mishearing or dropping words, not to the judging logic.
 
 **Scoring a passage:** `judgeAttempt` returns two scores. `overallPercent` is correct ÷ (all expected words + extra words), so stopping early lowers it; show this one for a passage. `scorePercent` only covers the words the reciter reached, so 1 correct word of a page scores 100. Words after the point where the reciter stopped come back as `unattempted` (not errors). Words skipped *before* a recited word come back as `omission`.
 
